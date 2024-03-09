@@ -4,6 +4,7 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
+		<!-- form is control/component, it is a collection of elements  -->
           <f:SimpleForm id="SimpleFormDisplay354"
 			editable="true"
 			layout="ResponsiveGridLayout"
@@ -48,9 +49,36 @@
 			</f:content>
 		  </f:SimpleForm>
 		<Button text="Load product list" press="getProductList"/>
+		
 		<List headerText="Products" headerLevel="H2" 	items="{path: 'P>/'}">
-			<StandardListItem title="{P>ProductName}" counter="{P>UnitsInStock}"/>
+			<items>
+			<StandardListItem title="{P>ProductName}" info="test info" counter="{P>UnitsInStock}" />
+			</items>
+			<headerToolbar>
+				<OverflowToolbar>
+						<Title text="Products overflow" level="H2" />
+						<ToggleButton id="toggleInfoToolbar" text="Hide/Show InfoToolbar" press="onToggleInfoToolbar" />
+				</OverflowToolbar>
+			</headerToolbar>
 		</List>
+		<Table id="idProductsTable" inset="false" items="{path: 'P>/'}">
+		<columns>
+			<Column width="12em">
+				<Text text="Product" />
+			</Column>
+			<Column width="12em">
+				<Text text="Quantity" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{P>ProductName}" />
+					<Text text="{P>UnitsInStock}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+		</Table>
         </content>
         <footer>
         <Toolbar>
