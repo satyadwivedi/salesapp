@@ -1,0 +1,62 @@
+<mvc:View controllerName="com.satya.salesapp.controller.salesView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+          <f:SimpleForm id="SimpleFormDisplay354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Order details"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Name" />
+				<Input id= "idName" value="{/name}" width="500px" class="sapUiSmalleMargin"/>
+				<Label text="Street/No." />
+				<Input id ="idStreet" value="{/street}"
+                    width="500px" class="sapUiSmalleMargin"/>
+                <Input value="" width="100px"></Input>    
+				<Label text="ZIP Code/City" />
+				<Input id="idZIP" value=""
+                    width="500px" class="sapUiSmalleMargin"/>
+                    <Input width="100px"></Input>
+				<Label text="Country" />
+				<Input id="idCountry" value="{/country}"
+                    width="200px" class="sapUiSmalleMargin"/>
+               <Label text="Mobile"  /> 
+                <Input id ="idPhone" type="Phone"></Input>    
+				<Label text="Default RadioButton use" labelFor="GroupA" />
+			<RadioButtonGroup id="GroupA">
+				<RadioButton text="Option 1"  />
+				<RadioButton text="Option 2" />
+				<RadioButton text="Option 3" />
+				<RadioButton text="Option 4" />
+				<RadioButton text="Option 5" />
+			</RadioButtonGroup>
+			</f:content>
+		  </f:SimpleForm>
+		<Button text="Load product list" press="getProductList"/>
+		<List headerText="Products" headerLevel="H2" 	items="{path: 'P>/'}">
+			<StandardListItem title="{P>ProductName}" counter="{P>UnitsInStock}"/>
+		</List>
+        </content>
+        <footer>
+        <Toolbar>
+        <ToolbarSpacer/>
+            <Button text="Submit" press="onSubmit"/>
+        </Toolbar>    
+        </footer>
+    </Page>
+</mvc:View>
